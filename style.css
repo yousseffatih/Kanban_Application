@@ -143,6 +143,10 @@
       background-color: #e20000;
 }
 
+.card.dragging{
+      opacity: 0.4;
+}
+
 .add{
       display: flex;
 }
