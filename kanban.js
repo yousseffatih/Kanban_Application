@@ -30,16 +30,17 @@ export default class kanban {
             function findColumnTask(){
                   for (const column of data){
                   const task = column.tasks.find( item => {
-                        return item.taskId === taskId;
+                        return item.taskId == taskId;
                   });
                   if(task){
                         return [task , column];
                   }
             }
             }
+            
             const [task , currentColumn] = findColumnTask();
             const targetColumne = data.find(column =>{
-                  return column.columnId ===updateInformation.columnId;
+                  return column.columnId == updateInformation.columnId;
             });
             task.content = updateInformation.content;
             currentColumn.tasks.splice(currentColumn.tasks.indexOf(task),1);
@@ -53,7 +54,10 @@ export default class kanban {
                   const task = column.tasks.find(item => {
                         return item.taskId == taskId ;
                   });
-                  column.tasks.splice(column.tasks.indexOf(task),1);
+                  if(task){
+                        column.tasks.splice(column.tasks.indexOf(task),1);
+                  }
+                  
             }
             save(data);
             
